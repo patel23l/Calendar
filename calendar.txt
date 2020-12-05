@@ -1,6 +1,3 @@
-hello
-world
-this
-is 
-a
-test
+[mon,5/12/12,10,work on the pl project]
+[mon,5/12/12,3,computation assignment]
+[tue,6/12/12,4,group meeting]
