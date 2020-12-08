@@ -1,3 +1,15 @@
+/*
+	writeCalendar => writes or adds a taks to text file
+		A: day of the week
+		C: date 
+		D: time 
+		T: assigned task
+
+	displayAll => displays all tasks that exist in the calendar
+
+	checkTask => shows how many tasks you have on that specific day
+*/
+
 day(mon).
 day(tue).
 day(wed).
@@ -6,34 +18,34 @@ day(fri).
 day(sat).
 day(sun).
 
-/* 
-	writing to the text file 
-	
-	TODO: 
-		need to check for valid time
-		need to check for valid date
-*/
 writeCalendar(A, C, D, T):- open('calendar.txt', append, Stream),
-			day(A),
-			write(Stream, [A,C,D,T]), 
-			nl(Stream),
-			close(Stream).
+	day(A),
+	D >= 1,
+	D < 25,
+	write(Stream, (A, C, D, T)), 
+	nl(Stream),
+	close(Stream). 
 
-/* 
-	reading does not work 
-	
-	TODO:
-		read line by line from text file
-		it will get date as input => display all tasks of that date
-*/
-readCalendar:- open('calendar.txt', read, Stream),
-			read_file(Str, Lines),
-			close(Str),
-			write(Lines),
-			ml(Stream).
+checkTask(N):- open('calendar.txt',read,Str),
+    readTasks(Str,Tasks),
+    close(Str),	
+	ismember((X,N,Y,Z),Tasks),
+	write([X,Y,Z]).
 
-read_file(Stream, []):- at_end_of_stream(Stream).
+ismember(X,[X|_]).
+ismember(X,[_|T]):- ismember(X,T).
 
-read_file(Stream, [X|L]):- \+ at_end_of_stream(Stream),
-			read(Stream, X),
-			read_file(Stream, L).
+displayAll:-
+    open('calendar.txt',read,Str),
+    readTasks(Str,Tasks),
+    close(Str),
+    write(Tasks),  	
+	nl.
+   
+readTasks(Stream,[]):-
+    at_end_of_stream(Stream).
+   
+readTasks(Stream,[X|L]):-
+    \+  at_end_of_stream(Stream),
+    read(Stream,X),
+    readTasks(Stream,L).
