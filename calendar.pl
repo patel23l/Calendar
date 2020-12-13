@@ -20,13 +20,19 @@ day(fri).
 day(sat).
 day(sun).
 
-writeCalendar(A, C, D, T):- open('calendar.txt', append, Stream),
+/* writeCalendar(A, C, D, T):- open('calendar.txt', append, Stream),
 	day(A),
-	D >= 1,x
+	D >= 1,x,
 	D < 25,
 	write(Stream, (A, C, D, T)), 
 	nl(Stream),
-	close(Stream). 
+	close(Stream). */ 
+
+writeCalendar(Str):- open('calendar.txt',append,Stream),
+         			write(Stream,'('),
+					write(Stream, Str),
+					write(Stream,').'), nl(Stream),
+         			close(Stream).
 
 checkTask(N):- open('calendar.txt',read,Str),
     readTasks(Str,Tasks),
