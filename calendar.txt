@@ -1,4 +1,3 @@
 (mon,5/12/12,10,project).
 (tue,6/12/12,24,sleep).
 (wed,6/12/12,24,study).
-thu,12/12/12,10,dance

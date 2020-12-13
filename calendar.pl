@@ -8,6 +8,8 @@
 	displayAll => displays all tasks that exist in the calendar
 
 	checkTask => shows how many tasks you have on that specific day
+
+	available appointments, count hours of work, count number of national holidays
 */
 
 day(mon).
@@ -20,7 +22,7 @@ day(sun).
 
 writeCalendar(A, C, D, T):- open('calendar.txt', append, Stream),
 	day(A),
-	D >= 1,
+	D >= 1,x
 	D < 25,
 	write(Stream, (A, C, D, T)), 
 	nl(Stream),
@@ -34,6 +36,13 @@ checkTask(N):- open('calendar.txt',read,Str),
 
 ismember(X,[X|_]).
 ismember(X,[_|T]):- ismember(X,T).
+
+displayAllAppJan:-
+	open('January.txt',read,Str),
+	readTasks(Str,Tasks),
+	close(Str),
+	write(Tasks),  	
+	nl.
 
 displayAll:-
     open('calendar.txt',read,Str),
