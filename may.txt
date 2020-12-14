@@ -1,0 +1,4 @@
+(mon,5/5/20,10,project).
+(tue,6/5/20,24,sleep).
+(wed,6/5/20,24,study).
+(thu,10/5/20,5,project).
