@@ -47,14 +47,16 @@ month(dec, 'november.txt').
 writeCalendar(Str):- open('calendar.txt',append,Stream),
          			write(Stream,'('),
 					write(Stream, Str),
-					write(Stream,').'), nl(Stream),
+					write(Stream,').'), 
+					nl(Stream),
          			close(Stream).
 
 writeMonth(N, Str):- month(N, Y),
 					open(Y,append,Stream),
          			write(Stream,'('),
 					write(Stream, Str),
-					write(Stream,').'), nl(Stream),
+					write(Stream,').'), 
+					nl(Stream),
          			close(Stream).
 
 checkTask(N):- open('calendar.txt',read,Str),
@@ -96,7 +98,7 @@ displayAll:-
     write(Tasks),  	
 	nl.
 
-displayMonth(M):- month(M, Y)
+displayMonth(M):- month(M, Y),
     open(Y,read,Str),
     readTasks(Str,Tasks),
     close(Str),
