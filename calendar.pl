@@ -32,7 +32,7 @@ month(aug, 'august.txt').
 month(sep, 'september.txt').
 month(octo, 'october.txt').
 month(nov, 'november.txt').
-month(dec, 'november.txt').
+month(dec, 'december.txt').
 
 /* 
 	writeCalendar(A, C, D, T):- open('calendar.txt', append, Stream),

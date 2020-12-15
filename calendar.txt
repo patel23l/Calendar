@@ -2,3 +2,4 @@
 (tue,6/12/20,24,sleep).
 (wed,6/10/20,24,study).
 (thu,10/2/20,5,project).
+(sat,1/1/21,8,dinner).
