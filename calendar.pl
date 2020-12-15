@@ -71,6 +71,10 @@ checkAppoint(M, D, T):- month(M, Y),
 					close(Str),	
 					ismember((X,D,T,Z),Tasks).
 
+
+ismember(X,[X|_]).
+ismember(X,[_|T]):- ismember(X,T).
+
 /*
 	checkHours(N):- open('calendar.txt',read,Str),
 					readTasks(Str,Tasks),
@@ -80,9 +84,6 @@ checkAppoint(M, D, T):- month(M, Y),
 
 	add([Item], Item).
 	add([Item1,Item2 | Tail], Total) :- add([Item1+Item2|Tail], Total).
-
-	ismember(X,[X|_]).
-	ismember(X,[_|T]):- ismember(X,T).
 
 	displayAllAppJan:- open('January.txt',read,Str),
 						readTasks(Str,Tasks),
