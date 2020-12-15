@@ -9,6 +9,8 @@
 
 	displayAll => displays all tasks that exist in the calendar
 
+	displayMonth => displays all tasks for a chosen month
+
 	checkTask => shows how many tasks you have on that specific day
 
 	checkAppoint => returns true if tasks exist on the given date & time 
@@ -34,7 +36,7 @@ month(octo, 'october.txt').
 month(nov, 'november.txt').
 month(dec, 'december.txt').
 
-/* 
+/*
 	writeCalendar(A, C, D, T):- open('calendar.txt', append, Stream),
 					day(A),
 					D >= 1,x,
@@ -71,11 +73,15 @@ checkAppoint(M, D, T):- month(M, Y),
 					close(Str),	
 					ismember((X,D,T,Z),Tasks).
 
-
 ismember(X,[X|_]).
 ismember(X,[_|T]):- ismember(X,T).
 
-/*
+/* adding elements to the list 
+add_tail([],X,[X]).
+add_tail([H|T],X,[H|L]):- add_tail(T,X,L).
+*/
+
+/*	tried a funtion that calculates the total hours
 	checkHours(N):- open('calendar.txt',read,Str),
 					readTasks(Str,Tasks),
 					close(Str),	
@@ -90,6 +96,15 @@ ismember(X,[_|T]):- ismember(X,T).
 						close(Str),
 						write(Tasks),  	
 						nl. 
+						/*	
+countHours(_, [], 0).
+
+countHours(X, [X | T], N) :-
+  !, countHours(X, T, N1),
+  N is N + 1.
+
+countHours(X, [_ | T], N) :-
+  countHours(X, T, N).*/	
 */
 
 displayAll:-
